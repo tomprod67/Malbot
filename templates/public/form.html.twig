@@ -1,0 +1,111 @@
+<div id="form">
+    {{ form_start(form) }}
+    <div id="form-errors">
+        {{ form_errors(form.name) }}
+        {{ form_errors(form.mail) }}
+        {{ form_errors(form.adress) }}
+        {{ form_errors(form.city) }}
+        {{ form_errors(form.cp) }}
+        {{ form_errors(form.telnumber) }}
+        {{ form_errors(form.message) }}
+    </div>
+    <div class="form-row">
+        <div class="label-form">
+            {{ form_label(form.name, null, {
+                'label': 'NOM',
+                'label_attr': {'class': 'form-label'}
+            }) }}
+        </div>
+        <div class="field-form">
+            {{ form_widget(form.name, {'attr': {'class': 'form-fied', 'maxlength': 50}}) }}
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="label-form">
+            {{ form_label(form.mail, null, {
+                'label': 'EMAIL',
+                'label_attr': {'class': 'form-label'}
+            }) }}
+        </div>
+        <div class="field-form">
+            {{ form_widget(form.mail, {'attr': {'class': 'form-fied', 'maxlength': 70}}) }}
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="label-form">
+            {{ form_label(form.adress, null, {
+                'label': 'ADRESSE',
+                'label_attr': {'class': 'form-label'}
+            }) }}
+        </div>
+        <div class="field-form">
+            {{ form_widget(form.adress, {'attr': {'class': 'form-fied', 'maxlength': 50}}) }}
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="label-form">
+            {{ form_label(form.city, null, {
+                'label': 'VILLE',
+                'label_attr': {'class': 'form-label'}
+            }) }}
+        </div>
+        <div class="field-form">
+            {{ form_widget(form.city, {'attr': {'class': 'form-fied', 'maxlength': 50}}) }}
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="label-form">
+            {{ form_label(form.cp, null, {
+                'label': 'CODE POSTAL',
+                'label_attr': {'class': 'form-label'}
+            }) }}
+        </div>
+        <div class="field-form">
+            {{ form_widget(form.cp, {'attr': {'class': 'form-fied', 'maxlength': 100}}) }}
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="label-form">
+            {{ form_label(form.telnumber, null, {
+                'label': 'TÉLÉPHONE',
+                'label_attr': {'class': 'form-label'}
+            }) }}
+        </div>
+        <div class="field-form">
+            {{ form_widget(form.telnumber, {'attr': {'class': 'form-fied', 'maxlength': 20}}) }}
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="label-form">
+            {{ form_label(form.message, null, {
+                'label': 'MESSAGE',
+                'label_attr': {'class': 'form-label'}
+            }) }}
+        </div>
+        <div class="field-form">
+            {{ form_widget(form.message, {'attr': {'class': 'form-fied', 'maxlength': 5000}}) }}
+            <p><span id="counter"></span><span id="rest"></span><span id="limitErrorMessage"></span> </p>
+        </div>
+    </div>
+
+    <p id="form-condition">
+        En soumettant ce formulaire, vous acceptez que la société MALBOT puisse utiliser les coordonnées que vous
+        nous fournissez pour vous contacter au sujet de votre demande. Vous pourrez
+        à tout moment demander la suppression de vos informations personnelles.
+        Pour en savoir plus sur nos modalités sur nos pratiques  en matière de confidentialité et sur notre
+        engagement vis-à-vis de la protection de la vie privée, consultez notre charte des <a href="#">Données personnelles</a>.
+    </p>
+    <div id="captcha" class="g-recaptcha" data-sitekey="6LfTqzsaAAAAABWeny5S8phe_suRG06euefyz37Y"></div>
+
+    {{ form_row(form.submit, {'label':'Envoyer votre message', 'attr' :
+        {'class': 'contact-form-submit'}} ) }}
+
+
+    {{ form_end(form) }}
+</div>

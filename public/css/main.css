@@ -1,0 +1,361 @@
+/***************************** FONTS *********************************/
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/roboto-regular-webfont.woff2') format('woff2'),
+    url('../fonts/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/****************************** END FONTS **********************************/
+
+/****************************************************************************
+******************************* BASE.TWIG ***********************************
+*****************************************************************************/
+
+/*********************** DIV IN ABSOLUTE POSITION ***************************/
+/* LOGO MALBOT */
+#absolute-left-logo{
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+}
+/* LOGO QUALIBAT */
+#absolute-right-logo{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+/*********************** END DIV IN ABSOLUTE POSITION ***************************/
+
+*{
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: #3f3f47;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    font-family: open_sansregular;
+}
+
+#global-wrapper{
+    background: linear-gradient(to bottom, lightgrey 45%, white);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #3f3f47;
+
+}
+
+/********************************************************************************
+*********************** START HEADER ********************************************
+*********************************************************************************/
+header{
+    display: flex;
+    flex-direction: column;
+    background-color: #87CEEB;
+}
+/*********************** START FIRST CHILD OF HEADER ***************************/
+#infos-top-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-left: 15em;
+    border-bottom: 2px solid white;
+}
+#infos-top-header>div{
+    align-self: center;
+}
+
+#adress{
+    text-align: center;
+}
+#tel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+#adress p, #tel p, #tel a{
+    text-transform: uppercase;
+    font-weight: 700;
+    height: 100%;
+}
+#logo-tel{
+    width: 1.5em;
+}
+#logo-malbot{
+    width: 16em;
+}
+#logo-qualitbat{
+    width: 4em;
+}
+#logo-alsace{
+    width: 4em;
+}
+#logo-facebook{
+    width: 12em;
+}
+/*********************** END FIRST CHILD OF HEADER ***************************/
+/*********************** START SECOND CHILD OF HEADER ***************************/
+
+#infos-bottom-header{
+    background-color: #B0C4DE;
+    padding-bottom: 2em;
+    border-bottom: 1px solid black;
+}
+#infos-bottom{
+    padding: 1.5em 1em 1.5em 25%;
+    font-size: 1em;
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: bold;
+    color: white;
+}
+nav{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 4em;
+}
+nav a, nav span{
+    padding: 1em;
+    border: 1px solid black;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    vertical-align: center;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+nav a:hover, nav span:hover{
+    background-color: #5383e3;
+}
+/*********************** END SECOND CHILD OF HEADER ***************************/
+
+/*******************************************************************************
+****************************** END HEADER ************************************
+*******************************************************************************/
+
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#main-dynamic{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#contact{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 2em 4em;
+}
+#form{
+    width: 60%;
+}
+#captcha{
+    margin-left: 1em;
+}
+#map-coord-wrapper{
+    border: 1px solid #5383e3;
+    padding: 0 1em 0 1em;
+    width: 40%;
+    font-size: 16px;
+}
+#map-coord-wrapper h3{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+#map-coord-wrapper>div:not(.not){
+    border-bottom: 3px solid #87CEEB;
+}
+#map-coord-wrapper>div{
+    margin: 0.5em;
+    padding-left: 1em;
+}
+#map-coord-wrapper>div a{
+    color: #e1493f;
+}
+#map-coord-wrapper>div p{
+    font-weight: bold;
+}
+
+
+.section-padded{
+    width: 100%;
+    padding: 2em 8em;
+    text-align: center;
+    color: #3f3f47;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+#map{
+    width: 100%;
+    height: 25em;
+    border: 2px solid #87CEEB;
+    margin: 1em 0 1em 0;
+}
+#legende{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 0.5em;
+}
+.legende-child{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 0.6em;
+}
+.legende-child img{
+    margin-right: 0.5em;
+    width: 1.5em;
+}
+.legende-child span{
+    margin-right: 0.5em;
+    color: red;
+    font-size: 0.7em;
+    background-color: red;
+}
+#legende-malbot{
+    color: #FE0809;
+}
+#logo-fb-footer{
+    width: 10em;
+}
+footer{
+    display: flex;
+    flex-direction: column;
+    background-color: #B0C4DE;
+    border-top: 2px solid #5383e3;
+}
+#infos-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#infos-footer p{
+    text-align: center;
+}
+#footer-legal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #5383e3;
+    background-color: #3f3f47;
+}
+#footer-legal>a{
+    padding: 0 2em;
+    color: #1fafdb;
+    font-size: 0.7em;
+    text-decoration: underline;
+}
+#footer-legal p{
+    padding: 0 2em;
+    color: white;
+    font-size: 0.6em;
+}
+#footer-legal p a{
+    text-decoration: underline;
+    color: yellow;
+}
+.malbot{
+    color: red;
+    font-size: 2.5em;
+    font-family: Serif;
+    font-weight: bolder;
+}
+#adress-footer, #infos-footer a{
+    font-weight: bold;
+}
+
+.flash-message-error{
+    color: #721c24;
+    background-color: #F8D7DA;
+    border: 1px solid #f5c6cb;
+    text-align: center;
+    position: fixed;
+    top: -1em;
+    width: 100%;
+    padding: 1em;
+}
+.flash-message-success{
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    text-align: center;
+    position: fixed;
+    top: -1em;
+    width: 100%;
+    padding: 1em;
+}
+
+/*******************************************************************************
+************************* START MAIN-DYNAMIC SECTION ***************************
+*******************************************************************************/
+
+#about{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#photo_sdb{
+    width: 23em;
+    border: 1px solid white;
+}
+#about-text{
+    padding: 0 1em 1em 1em;
+}
+#about-text span{
+    font-weight: bold;
+    color: #e1493f;
+    border-bottom: 2px solid #87CEEB;
+    cursor: pointer;
+}
+.bold{
+    font-weight: bold;
+}
+#about-text h1{
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    border-bottom: 2px solid #87CEEB;
+    border-top: 2px solid #87CEEB;
+}
+
+
+
+/*******************************************************************************
+************************* END MAIN-DYNAMIC SECTION *****************************
+*******************************************************************************/
+
+
+

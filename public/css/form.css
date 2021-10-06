@@ -1,0 +1,106 @@
+/* All the line of form (label + field) */
+
+#form .form-row{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    padding: 0 0.2em 0 0.2em;
+    width: 95%;
+}
+
+/* label of form */
+.label-form{
+    width: 25%;
+    justify-content: start;
+    padding: 0.3em;
+    color: #5383e3;
+}
+/* Field of form */
+.field-form{
+    width: 75%;
+    justify-content: end;
+    padding: 0.3em;
+}
+/* add the star after the label if required field  */
+label.required:after {
+    content: "*";
+    color: #5383e3;
+    font-size: 1.4em;
+    font-weight: 400;
+    margin-left: 0.2em;
+}
+
+/* Field-type : text email */
+.field-form input[type=text], input[type=email]{
+    width: 100%;
+    border: 0;
+    border: 1px solid #878887;
+    border-radius: 0.4em;
+    background: none;
+    color: black;
+    padding: 0.5em;
+    font-size: 1em;
+    cursor: text;
+}
+/* Textarea */
+form div textarea{
+    width: 100%;
+    height: 12em;
+    border: 1px solid #878887;
+    border-radius: 0.5em;
+    background: none;
+    color: #FFFFFF;
+    cursor: text;
+    font-size: 1em;
+    padding: 0.5em;
+}
+/* Focus of fields-type : text, email, textarea */
+.field-form input[type=text]:focus, input[type=email]:focus, textarea:focus{
+    outline: 0;
+    border: 2px solid #5383e3;
+}
+/* Submit button */
+.contact-form-submit{
+    border: 0;
+    padding: 0.5em 0.8em 0.5em 0.8em;
+    font-weight: bold;
+    background-color: #5383e3;
+    color: #000000;
+    font-size: 1.1em;
+    width: 40%;
+    margin-left: 37%;
+    margin-top: 1.5em;
+    cursor: pointer;
+}
+
+/* form-condition (CGU) in form */
+#form-condition{
+    width: 100%;
+    color: #999;
+    font-size: 0.7em;
+    text-align: justify;
+    padding-left: 2em;
+    padding-right: 4em;
+}
+/* Errors container for form */
+#form-errors{
+    width: 90%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    color: #721c24;
+    margin: auto;
+    font-size: 1.1em;
+}
+/* List of errors */
+#form-errors > ul{
+    background-color: #F8D7DA;
+    border: 1px solid #f5c6cb;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0.2em 0.5em 0.2em 1.5em;
+}
+.field-form #limitErrorMessage{
+    display: none;
+    color: darkred;
+}

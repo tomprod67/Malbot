@@ -1,0 +1,77 @@
+{% extends 'security/admin/base-admin.html.twig' %}
+
+{% block containerDynamic %}
+    <h2>Gestion de l'entité "Contact Form"</h2>
+
+
+    <div class="container-search-form-new-button-row">
+        <div class="container-form">
+            <form id="search-form" action="{{ path('search-request-contact') }}" method="POST">
+                <input type="search" name="search" placeholder="&#xf002   search" class="fas fa-search">
+                <select name="categorie" size="1">
+                    <option value="id">Id</option>
+                    <option value="name">Name</option>
+                    <option value="firstname">FirstName</option>
+                    <option value="mail">Mail</option>
+                    <option value="society">Society</option>
+                    <option value="telnumber">TelNumber</option>
+                    <option value="website">Website</option>
+                    <option value="message">Message</option>
+
+                </select>
+                <input type="submit" value="Rechercher">
+            </form>
+            {% block countitem %}
+                <p>Il y a <strong>{{ pagination.getTotalItemCount }}</strong> requète(s) du formulaire de Contact enregistré(s)</p>
+            {% endblock %}
+        </div>
+        <a id="button-new" class="newbutton" href="{{ path('new-request-contact') }}">Nouveau</a>
+    </div>
+     <table id="tab">
+        <thead>
+            <tr>
+                <th class="flex05">id</th>
+                <th class="flex15">date</th>
+                <th class="flex1">name</th>
+                <th class="flex1">firstName</th>
+                <th class="flex2">Mail</th>
+                <th class="flex1">telNumber</th>
+                <th class="flex2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contactRequest in pagination %}
+            <tr class="tr-content">
+                <td class="data flex05"><a href="{{ path('show-one-request-contact', {'id': contactRequest.id}) }}">{{ contactRequest.id ?: "<span class='null'>null</span>"}}</a></td>
+                <td class="data flex15"><a href="{{ path('show-one-request-contact', {'id': contactRequest.id}) }}">{{ contactRequest.date|date("d-m-Y \\à H:i:s")?: "<span class='null'>null</span>"}}</a></td>
+                <td class="data flex1"><a href="{{ path('show-one-request-contact', {'id': contactRequest.id}) }}">{{ contactRequest.name ?: "<span class='null'>null</span>"}}</a></td>
+                <td class="data flex1"><a href="{{ path('show-one-request-contact', {'id': contactRequest.id}) }}">{{ contactRequest.firstName ?: "<span class='null'>null</span>" }}</a></td>
+                <td class="data flex2"><a href="{{ path('show-one-request-contact', {'id': contactRequest.id}) }}">{{ contactRequest.mail ?: "<span class='null'>null</span>" }}</a></td>
+                <td class="data flex1"><a href="{{ path('show-one-request-contact', {'id': contactRequest.id}) }}">{{ contactRequest.telNumber ?: "<span class='null'>null</span>" }}</a></td>
+
+
+                <td class="action flex2">
+                    <a id="update-button" href="{{ path('update-request-contact', {'id': contactRequest.id}) }}">Modifier</a>
+                    <a id="delete-button" href="{{ path('delete-request-contact', {'id': contactRequest.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}
+{% block js %}
+<script>
+$(document).ready(function() {
+    $('.data').click(function() {
+        var href = $(this).find("a").attr("href");
+        if (href) {
+            window.location = href;
+        }
+    })
+});
+</script>
+{% endblock %}

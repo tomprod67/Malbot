@@ -1,0 +1,58 @@
+{% extends 'security/admin/base-admin.html.twig' %}
+
+{% block containerDynamic %}
+<a id="button-return" href="javascript:history.back()">Retour à la liste</a>
+<div class="container-action-button">
+    <a id="button-update" href="{{ path('update-request-contact', {'id': contactRequest.id}) }}">Modifier</a>
+    <a id="button-delete" href="{{ path('delete-request-contact', {'id': contactRequest.id}) }}">Supprimer</a>
+</div>
+
+
+<table id="tab-one">
+    <tr>
+        <th>Id</th>
+        <td>{{ contactRequest.id ?: 'null'}}</td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td>{{ contactRequest.name ?: 'null'}}</td>
+    </tr>
+    <tr>
+        <th>FirstName</th>
+        <td>{{ contactRequest.firstName }}</td>
+    </tr>
+    <tr>
+        <th>Mail</th>
+        <td>{{ contactRequest.mail ?: 'null' }}</td>
+    </tr>
+    <tr>
+        <th>Society</th>
+        <td>{{ contactRequest.society ?: 'null'}}</a></td>
+    </tr>
+    <tr>
+        <th>TelNumber</th>
+        <td>{{ contactRequest.telNumber ?: 'null' }}</td>
+    </tr>
+    <tr>
+        <th>Website</th>
+        <td>{{ contactRequest.website ?: 'null' }}</td>
+    </tr>
+    <tr>
+        <th>Message</th>
+        <td>{{ contactRequest.message ?: 'null' }}</td>
+    </tr>
+    <tr>
+        <th>Date</th>
+        <td>{{ contactRequest.date|date("d-m-Y \\à H:i:s")?: "<span class='null'>null</span>"}}</td>
+    </tr>
+</table>
+
+{% endblock %}
+{% block js %}
+    <script>
+        $('#eye').click(function() {
+            $(this).toggleClass('fa-eye-slash');
+            $('#pwd').toggleClass('blurry')
+        });
+    </script>
+{% endblock %}

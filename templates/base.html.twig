@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {% block title %}{% block secondTitle %}{% endblock %}{% endblock %}
+    {% block stylesheets %}
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {% endblock %}
+</head>
+<body>
+<div id="global-wrapper">
+    {# DIV IN ABSOLUTE POSITION #}
+    {% for message in app.flashes('success') %}
+        <p class="flash-message-success">{{ message }}</p>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <p class="flash-message-error">{{ message }}</p>
+    {% endfor %}
+    {% block header %}{% endblock %}
+    {% block main %}{% endblock %}
+    {% block contact %}{% endblock %}
+    {% block footer %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+</div>
+</body>
+</html>

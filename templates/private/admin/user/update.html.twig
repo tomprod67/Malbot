@@ -1,0 +1,145 @@
+{% extends 'private/admin/admin-panel.html.twig' %}
+
+{% block containerDynamic %}
+    <a id="button-return" href="javascript:history.back()">Retour</a>
+
+
+    {% block titleh2 %}<h2>update login request</h2>{% endblock %}
+    {% block passwordChangeButton %}
+        <a id="password-change-button" href="{{ path('admin-password-change', {'id': id}) }}">Changer de mot de passe</a>
+    {% endblock %}
+
+    <div id="form">
+    {{ form_start(form) }}
+    <div id="form-errors">
+        {{ form_errors(form.username) }}
+        {{ form_errors(form.registerDate) }}
+        {{ form_errors(form.lastLogin) }}
+
+    </div>
+    {% if id is defined %}
+    <div class="form-row">
+        <div class="label-form">
+            <label>Id</label>
+        </div>
+        <div class="field-form">
+            <span><strong>{{ id }}</strong></span>
+        </div>
+    </div>
+        {% endif %}
+
+    <div class="form-row">
+        <div class="label-form">
+            {{ form_label(form.username, null, {
+                'label': 'Username',
+                'label_attr': {'class': 'form-label'}
+            }) }}
+        </div>
+        <div class="field-form">
+            {{ form_widget(form.username, {'attr': {'class': 'form-fied', 'maxlength': 50}}) }}
+        </div>
+    </div>
+
+    {% block passwordField %}{% endblock %}
+
+        <div class="form-row">
+            <div class="label-form">
+                <label for="role">Rôle(s)</label>
+            </div>
+            <div class="field-form">
+                <div class="container-checkbox">
+                    <input type="checkbox" name="role[]" value="ADMIN" {% for role in roles%}{% if role == 'ROLE_ADMIN' %}checked{% endif %}{% endfor %}>
+                    <span>ADMIN</span>
+                </div>
+                <div class="container-checkbox">
+                    <input type="checkbox" name="role[]" value="USER" {% for role in roles%}{% if role == 'ROLE_USER' %}checked{% endif %}{% endfor %}>
+                    <span>USER</span>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    <div class="form-row">
+        <div class="label-form">
+            {{ form_label(form.registerDate, null, {
+                'label': 'registerDate',
+                'label_attr': {'class': 'form-label'}
+            }) }}
+        </div>
+        <div class="field-form">
+            {{ form_widget(form.registerDate, {'attr': {'class': 'form-fied', 'maxlength': 50}}) }}
+            <span id="now">Date et heure actuel</span>
+
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="label-form">
+            {{ form_label(form.lastLogin, null, {
+                'label': 'lastLogin',
+                'label_attr': {'class': 'form-label'}
+            }) }}
+        </div>
+        <div class="field-form">
+            {{ form_widget(form.lastLogin, {'attr': {'class': 'form-fied', 'maxlength': 20}}) }}
+            <span id="now2">Date et heure actuel</span>
+            <input type="checkbox" value="null" name="null">Null
+
+        </div>
+    </div>
+
+
+
+    {{ form_row(form.envoyer, {'label':'Envoyer', 'attr' :
+        {'class': 'form-submit'}} ) }}
+
+
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
+{% block js %}
+    <script>
+        document.querySelector("#now").onclick = function() {
+            var dt = new Date();
+            if ((dt.getMonth() + 1) < 10) {
+                var month = "0" + dt.getMonth()+1;
+            } else{
+                var month = dt.getMonth()+1;
+            }
+            if (dt.getDate() < 10){
+                var day = "0" +dt.getDate()
+            }
+            else{
+                var day = dt.getDate();
+            }
+            var hour = dt.getHours();
+            var min = dt.getMinutes();
+            var years = dt.getFullYear();
+            $("#user_registerDate_date").val(years + "-" + month + "-" + day);
+            $("#user_registerDate_time_hour").val(hour);
+            $("#user_registerDate_time_minute").val(min);
+        }
+        document.querySelector("#now2").onclick = function() {
+            var dt = new Date();
+            if ((dt.getMonth() + 1) < 10) {
+                var month = "0" + dt.getMonth()+1;
+            } else{
+                var month = dt.getMonth()+1;
+            }
+            if (dt.getDate() < 10){
+                var day = "0" +dt.getDate()
+            }
+            else{
+                var day = dt.getDate();
+            }
+            var hour = dt.getHours();
+            var min = dt.getMinutes();
+            var years = dt.getFullYear();
+            $("#user_lastLogin_date").val(years + "-" + month + "-" + day);
+            $("#user_lastLogin_time_hour").val(hour);
+            $("#user_lastLogin_time_minute").val(min);
+        }
+    </script>
+{% endblock %}

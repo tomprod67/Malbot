@@ -1,0 +1,69 @@
+{% extends 'private/admin/admin-panel.html.twig' %}
+ {% block containerDynamic %}
+    <h2 class="text-center">Gestion de l'entité "User"</h2>
+
+
+    <div class="container-search-form-new-button-row">
+        <div class="flex-col">
+            <form id="search-form" action="{{ path('search-user') }}" method="POST">
+                <input type="search" name="search" placeholder="&#xf002   search" class="fas fa-search">
+                <select name="categorie" size="1">
+                    <option value="id">id</option>
+                    <option value="username">username</option>
+                </select>
+                <input type="submit" value="Rechercher">
+            </form>
+            {% block countitem %}
+                <p>Il y a <strong>{{ pagination.getTotalItemCount }}</strong> utilisateur(s) enregistré(s)</p>
+            {% endblock %}
+        </div>
+        <div>
+        <a id="button-new" href="{{ path('new-user') }}">Nouveau</a>
+        </div>
+    </div>
+    <table id="tab">
+        <thead>
+        <tr>
+            <th class="flex05">id</th>
+            <th class="flex1">username</th>
+            <th class="flex1">roles</th>
+            <th class="flex1">registerDate</th>
+            <th class="flex1">lastLogin</th>
+            <th class="flex2">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in pagination %}
+            <tr class="tr-content">
+                <td class="data flex05"><a href="{{ path('show-one-user', {'id': user.id}) }}">{{ user.id ?: "<span class='null'>null</span>"}}</a></td>
+                <td class="data flex1"><a href="{{ path('show-one-user', {'id': user.id}) }}">{{ user.username ?: "<span class='null'>null</span>"}}</a></td>
+                <td class="data flex1"><a href="{{ path('show-one-user', {'id': user.id}) }}">{% for role in user.roles %}{{ ' - '~role~' - ' ?: "<span class='null'>null</span>"}}<br/>{% endfor %}</a></td>
+
+                <td class="data flex1"><a href="{{ path('show-one-user', {'id': user.id}) }}">{{ user.registerDate|date("d-m-Y \\à H:i:s") ?: "<span class='null'>null</span>" }}</a></td>
+                <td class="data flex1"><a href="{{ path('show-one-user', {'id': user.id}) }}">{{ user.lastLogin is same as(null) ? "<span class='null'>null</span>" : user.lastLogin|date("d-m-Y \\à H:i:s") }}</a></td>
+
+                <td class="action flex2">
+                    <a id="update-button" href="{{ path('update-user', {'id': user.id}) }}">Modifier</a>
+                    <a id="delete-button" href="{{ path('delete-user', {'id': user.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}
+{% block js %}
+    <script>
+        $(document).ready(function() {
+            $('.data').click(function() {
+                var href = $(this).find("a").attr("href");
+                if (href) {
+                    window.location = href;
+                }
+            })
+        });
+    </script>
+{% endblock %}

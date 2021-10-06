@@ -1,0 +1,46 @@
+{% extends 'private/admin/admin-panel.html.twig' %}
+
+{% block containerDynamic %}
+    <a id="button-return" href="javascript:history.back()">Retour à la liste</a>
+    <div class="container-action-button">
+        <a id="button-update" href="{{ path('update-user', {'id': user.id}) }}">Modifier</a>
+        <a id="button-delete" href="{{ path('delete-user', {'id': user.id}) }}">Supprimer</a>
+        <a id="password-change-button" href="{{ path('admin-password-change', {'id': user.id}) }}">Changer de mot de passe</a>
+    </div>
+
+
+
+    <table id="tab-one">
+        <tr>
+            <th>Id</th>
+            <td>{{ user.id ?: 'null'}}</td>
+        </tr>
+        <tr>
+            <th>username</th>
+            <td>{{ user.username ?: 'null'}}</td>
+        </tr>
+
+        <tr>
+            <th class="big-field">roles</th>
+            <td class="big-data">{% for role in user.roles %}<span>{{ ' - '~role~' - ' ?: 'null' }}</span>{% endfor %}</td>
+        </tr>
+        <tr>
+            <th>registerDate</th>
+            <td>{{ user.registerDate|date("d-m-Y \\à H:i:s")?: 'null'}}</a></td>
+        </tr>
+        <tr>
+            <th>lastLogin</th>
+            <td>{{ user.lastLogin|date("d-m-Y \\à H:i:s") ?: 'null' }}</td>
+        </tr>
+
+    </table>
+
+{% endblock %}
+{% block js %}
+    <script>
+        $('#eye').click(function() {
+        $(this).toggleClass('fa-eye-slash');
+        $('#pwd').toggleClass('blurry')
+        });
+        </script>
+{% endblock %}

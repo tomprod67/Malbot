@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <nav class="flex-col">
+        <p>Vous êtes connecté en tant que <strong>{{ app.user.username }}</strong></p>
+
+        <h3>Panneau d'administration</h3>
+        <a href="#">Profil</a>
+        <a href="{{ path('admin-panel') }}">Accueil</a>
+        <a href="{{ path('app_logout') }}">Déconnexion</a>
+        <h4>Gestion des entités</h4>
+        <a href="{{ path('show-all-user') }}">User</a>
+        <a href="#">Login Form Request</a>
+        <a href="#">Contact Form Request</a>
+
+        <h4>Autres</h4>
+        <a href="#">link</a>
+        <a href="#">link</a>
+    </nav>
+    <div>
+        <h1 class="text-center">PANNEAU D'ADMINISTRATION</h1>
+        <div>
+            {% block containerDynamic %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
